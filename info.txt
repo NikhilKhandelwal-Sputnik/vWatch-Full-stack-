@@ -1,0 +1,13 @@
+bX6xZ2L5KXicOc34
+
+
+
+mongodb+srv://user1:bX6xZ2L5KXicOc34@cluster0.3bhg0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+nodemon is a dev dependency. Only req in development. use to update server automatically
+
+express handles basic server creation
+
+joi is used for validation of json data. It is used to validate json data before it is sent to the server. It is used to prevent sql injection and cross site scripting.
+
+express validator
