@@ -1,10 +1,15 @@
 const User = require('../models/userSchema')
+const bcrypt = require('bcryptjs')
 
 const register = async(req,res)=>{
     try {
-        const {name,email,password} =req.body;
 
-        const checkUser = await User.findOne({email});
+        const name = req.body.name;
+        const email = req.body.email; 
+        const password = req.body.password;
+        // const {name,email,password} =req.body//should be in same sequence
+
+        const checkUser = await User.findOne({email}); //check if email already present in db
 
         if(checkUser){
             return res.status(409).json({
@@ -14,10 +19,12 @@ const register = async(req,res)=>{
             })
         }
 
+        
+        const hashPassword = await bcrypt.hash(password, 10);
         const newUser =  new User({
             name,
             email,
-            password
+            password:hashPassword
         });
 
         await newUser.save();
@@ -26,8 +33,10 @@ const register = async(req,res)=>{
             success:true,
             message:"User registred Successfully",
             data:newUser
-        })
+        });
+
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             success:false,
             message:"internal Server error",

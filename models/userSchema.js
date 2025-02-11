@@ -1,3 +1,5 @@
+//Structure of Info Required from User
+
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -5,9 +7,14 @@ const userSchema = new mongoose.Schema({
         type:String,
         require:true
     },
-    email:{
+    email:{ 
         type:String,
         require:true
+        
+    },
+    phoneNo:{
+        type:String,
+        length:10,
     },
     password:{
         type:String,
