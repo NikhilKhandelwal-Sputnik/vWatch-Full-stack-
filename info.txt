@@ -12,3 +12,6 @@ joi is used for validation of json data. It is used to validate json data before
 
 express validator
 
+passportjs.org  for strategies
+
+jwt.io  hashing algorithms and tokens

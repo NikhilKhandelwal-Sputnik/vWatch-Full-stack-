@@ -7,6 +7,7 @@ const register = async(req,res)=>{
         const name = req.body.name;
         const email = req.body.email; 
         const password = req.body.password;
+        const phoneNo = req.body.phoneNo;
         // const {name,email,password} =req.body//should be in same sequence
 
         const checkUser = await User.findOne({email}); //check if email already present in db
@@ -18,13 +19,25 @@ const register = async(req,res)=>{
                 data:null
             })
         }
+        if(phoneNo){
+            const checkPhoneNo  =  await User.findOne({phoneNo});
+
+            if(checkPhoneNo){
+                return res.status(409).json({
+                    success:false,
+                    message:"Phone Number already registred",
+                    data:null
+                })
+            }
+        }
 
         
         const hashPassword = await bcrypt.hash(password, 10);
         const newUser =  new User({
             name,
             email,
-            password:hashPassword
+            password:hashPassword,
+            phoneNo:phoneNo
         });
 
         await newUser.save();
