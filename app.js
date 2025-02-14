@@ -12,8 +12,10 @@ connectDB();
 app.use(express.json());
 
 const userRoute = require('./routes/userRoutes')
+const productRoute = require('./routes/productRoutes')
 
 app.use('/user',userRoute)
+app.use('/product', productRoute)
 
 app.listen(PORT,()=>{
     console.log("Server is runing at port $(PORT)");

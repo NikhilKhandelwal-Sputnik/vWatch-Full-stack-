@@ -1,6 +1,6 @@
 const Product = require('../models/productSchema')
 
-const register = async(req,res)=>{
+const registerProduct = async(req,res)=>{
     try {
         const {name,price,description} = req.body;
 
@@ -37,3 +37,5 @@ const register = async(req,res)=>{
         
     }
 }
+
+module.exports = {registerProduct}

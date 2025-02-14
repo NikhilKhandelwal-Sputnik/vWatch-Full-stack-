@@ -1,7 +1,7 @@
 const User = require('../models/userSchema')
 const bcrypt = require('bcryptjs')
 
-const register = async(req,res)=>{
+const registerUser = async(req,res)=>{
     try {
 
         const name = req.body.name;
@@ -59,4 +59,4 @@ const register = async(req,res)=>{
 };
 
 
-module.exports ={register}
+module.exports ={registerUser}
