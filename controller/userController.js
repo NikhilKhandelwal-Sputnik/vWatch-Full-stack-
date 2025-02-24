@@ -58,5 +58,50 @@ const registerUser = async(req,res)=>{
     }
 };
 
+const userLogin = async(req, res)=>{
+    
+    try{
+        const email = req.body.email;
+        const password = req.body.password;
 
-module.exports ={registerUser}
+        const getUser = await User.findOne({email});
+
+        if(!getUser){
+            return res.status(404).json({
+                success:false,
+                data:null,
+                message:"User Not found. Please Register.."
+            })
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, getUser.password);
+
+        if(!isPasswordValid){
+            return res.status(401).json({
+                success:false,
+                data:null,
+                message:"Invalid Password!!"
+            })
+        }
+
+        return res.status(201).json({
+            success:true,
+            message:"Login Successfull !!",
+            data:getUser
+        })
+    }
+    catch(error){
+        console.log(error)
+        return res.status(500).json({
+            success:false,
+            data:null,
+            message:"Internal Server Error"
+        })
+    }
+};
+
+
+module.exports ={
+    registerUser,
+    userLogin
+};
