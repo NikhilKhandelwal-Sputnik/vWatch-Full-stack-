@@ -1,6 +1,9 @@
 const User = require('../models/userSchema')
 const bcrypt = require('bcryptjs')
 
+let loggedIn = false
+let tempUser;
+
 const registerUser = async(req,res)=>{
     try {
 
@@ -83,7 +86,8 @@ const userLogin = async(req, res)=>{
                 message:"Invalid Password!!"
             })
         }
-
+        loggedIn = true;
+        tempUser = getUser;
         return res.status(201).json({
             success:true,
             message:"Login Successfull !!",
@@ -100,8 +104,55 @@ const userLogin = async(req, res)=>{
     }
 };
 
+const userUpdate = async(req,res)=>{
+    try{
+        if(!loggedIn){
+            return res.status(401).json({
+                success:false,
+                data:null,
+                message:"Please login first"
+            })
+        }
+    }
+    catch(error){
+        console.log(error)
+        return res.status(500).json({
+            success:false,
+            data:null,
+            message:"Internal Server Error"
+        })
+    }
+};
+
+const delUser = async(req, res)=>{
+    try{
+
+
+        const id = req.params.id;
+        const deleteUser = await User.findByIdAndDelete(id)
+
+        return res.status(201).json({
+            success:true,
+            data:deleteUser,
+            message:'User Deleted Successfully'
+        })
+        
+        
+
+
+    }
+    catch(error){
+        console.log(error)
+        return res.status(500).json({
+            success:false,
+            data:null,
+            message:'Internal Server Error'
+        })
+    }
+};
 
 module.exports ={
     registerUser,
-    userLogin
+    userLogin,
+    delUser
 };
