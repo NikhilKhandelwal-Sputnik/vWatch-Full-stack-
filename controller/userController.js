@@ -106,13 +106,14 @@ const userLogin = async(req, res)=>{
 
 const userUpdate = async(req,res)=>{
     try{
-        if(!loggedIn){
-            return res.status(401).json({
-                success:false,
-                data:null,
-                message:"Please login first"
-            })
-        }
+        const id = req.params.id;
+        const {name} = req.body;
+        const updateUser = await User.findByIdAndUpdate(id,{name})
+        return res.status(200).json({
+            success:true,
+            data:updateUser,
+            message:'User Updated Successfully!!'
+        })
     }
     catch(error){
         console.log(error)
@@ -154,5 +155,6 @@ const delUser = async(req, res)=>{
 module.exports ={
     registerUser,
     userLogin,
+    userUpdate,
     delUser
 };

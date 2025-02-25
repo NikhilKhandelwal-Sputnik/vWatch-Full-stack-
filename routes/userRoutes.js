@@ -8,5 +8,6 @@ const controller = require('../controller/userController');
 userRouter.post('/register', controller.registerUser)
 userRouter.post('/login',controller.userLogin)
 userRouter.delete('/:id',controller.delUser)
+userRouter.patch('/:id',controller.userUpdate)
 
 module.exports = userRouter;
