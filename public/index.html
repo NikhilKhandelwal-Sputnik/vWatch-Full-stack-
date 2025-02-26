@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-Page</title>
+    <link rel="stylesheet" href="/css/lg_style.css">
+</head>
+<body class="background">
+    <div class="main_box">
+        <div class="heading">
+            <h2>Login</h2>
+        </div>
+        <div class="form">
+            <form id ="loginForm" method="POST" action="/user/login" onsubmit="return logFormData()">
+                
+                <label for="email">
+                    Email<br> <input type="text" name="email" id = "textFields" placeholder="Enter your Email">
+                </label>
+                
+                <br><br>
+                <label for="password">
+                    Password <br><input type="password" name="password" id = "textFields" placeholder="Enter your Password">
+                </label>
+                <div class="loginButton">
+                    <button type="submit" class="buttonStyle">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function logFormData() {
+            const form = document.getElementById('loginForm');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            console.log('Form Data:', data);
+            return true; // Allow form submission
+        }
+    </script>
+</body>
+</html>

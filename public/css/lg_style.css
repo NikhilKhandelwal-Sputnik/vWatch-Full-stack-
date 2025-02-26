@@ -1,0 +1,78 @@
+
+ .background{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background: radial-gradient();
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite; */
+    /* background-image: url("abstract-textured-backgound.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat; */
+    background-color: green;
+    
+}
+
+
+.main_box{
+    border: none;
+    height: 600px;
+    width: 600px;
+    align-self: center; 
+    margin: auto; 
+    vertical-align: middle; 
+    border-radius: 10px;
+    background: linear-gradient(to right bottom, rgb(166, 2, 248), rgb(252, 2, 240));
+    block-size: auto;
+    
+
+}
+
+.heading{
+    text-align: center;
+    margin: 8px 0px 2px;
+    border-bottom: 2px solid grey;
+    color:aqua;
+    /* background-color: aquamarine; */
+}
+.form{
+    /* background-color: aquamarine; */
+    align-content: space-around;
+    align-content: center;
+    height: 200px;
+    border-bottom: 2px solid grey;
+    margin-left: 10px;
+    color: white;
+}
+
+#textFields{
+    /* border: none; */
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: rgb(2, 150, 248,0);
+    padding: 8px;
+    color:black;
+    
+}
+
+.loginButton{
+    /* background-color: aquamarine; */
+    text-align: center;
+    vertical-align: middle;
+    margin: 10px;
+
+}
+
+.buttonStyle{
+    border: 2px solid black;
+    padding: 4px;
+    /* height: 4px;
+    width: 4px; */
+    border-radius: 100px;
+    color:  aqua;
+    block-size: auto;;
+    font-style: normal;
+    background-color: rgb(166, 2, 248);
+}

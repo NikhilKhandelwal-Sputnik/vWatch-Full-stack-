@@ -64,12 +64,16 @@ const registerUser = async(req,res)=>{
 const userLogin = async(req, res)=>{
     
     try{
+        console.log('Request body:', req.body); 
         const email = req.body.email;
         const password = req.body.password;
+
+        console.log(`Recieved login req for email: ${email}`);
 
         const getUser = await User.findOne({email});
 
         if(!getUser){
+            console.log(`user not found for email: ${email}`);
             return res.status(404).json({
                 success:false,
                 data:null,
