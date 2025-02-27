@@ -3,49 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login-Page</title>
-    <link rel="stylesheet" href="/css/lg_style.css">
+    <title>Registration-Page</title>
+    <link rel="stylesheet" href="/css/reg_style.css">
 </head>
 <body class="background">
     <div class="main_box">
         <div class="heading">
-            <h2>Login</h2>
+            <h2>Register</h2>
         </div>
         <div class="form">
-            <form id ="loginForm" onsubmit="logFormData(); return handleLogin(event);">
+            <form id ="registrationForm" onsubmit="logFormData(); return handleRegistration(event);">
                 
                 
-                <input type="text" name="email" id = "textFields" placeholder="Email">
+                <input type="text" name="name" id = "textFields" placeholder="Name">
                 <br><br>
                 
+                <input type="text" name="email" id = "textFields" placeholder="E-mail">
+                <br><br>
+                
+                <input type="number" name="phoneNo" id = "textFields" placeholder="Phone Number">
+                <br><br>
+        
                 <input type="password" name="password" id = "textFields" placeholder="Password">
                 <div class="loginButton">
-                    <button type="submit" class="buttonStyle">Login</button>
+                    <button type="submit" class="buttonStyle">Register</button>
                 </div>
                 
             </form>
-            <label for="Register" id="registerLink">Don't have an account? <a href="/user/register">Register Here..</a></label>
+            <label for="Login" id="signInLink">Already have an account? <a href="/user/login">SignIn Here..</a></label>
             <div id="errorMessage" style="color: red; display: none;"></div>
         </div>
     </div>
     <script>
         function logFormData() {
-            const form = document.getElementById('loginForm');
+            const form = document.getElementById('registrationForm');
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
             console.log('Form Data:', data);
             return true;
         }
 
-        async function handleLogin(event) {
+        async function handleRegistration(event) {
             event.preventDefault();
 
-            const form = document.getElementById('loginForm');
+            const form = document.getElementById('registrationForm');
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
 
             try {
-                const response = await fetch('/user/login', {
+                const response = await fetch('/user/register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -55,7 +61,8 @@
 
                 const result = await response.json();
                 if (response.ok) {
-                    const userId = result.data._id;
+                    // Login successful, redirect to another page
+                    const userId = result.data._id; // Get the user id from the JSON response
                     window.location.href = `/${userId}/dashboard`; // Change this to your desired page
                 } else {
                     // Login failed, display error message

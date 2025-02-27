@@ -1,5 +1,3 @@
-
-
 const express = require('express')
 const path = require('path')
 
@@ -25,6 +23,10 @@ app.use('/product', productRoute)
 app.get('/user/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'loginPage.html'));
 });
+app.get('/user/register', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'registerPage.html'));
+});
+
 
 app.listen(PORT,()=>{
     console.log('Server is runing at port $(PORT)');

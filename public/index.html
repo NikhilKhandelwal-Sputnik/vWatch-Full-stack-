@@ -3,18 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="/css/index_style.css">
+    <title>vWatch</title>
+    <link rel="stylesheet" href="css/vWatch.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <nav>
-        <div>
-            <button onclick="">Home</button>
+    <div class="full_bg">
+        <nav>
+            <img src="images/logo2.png" alt="Home" class="logo">
+            <div>
+                <button id="language">
+                    <i class="material-icons" style="vertical-align: middle;">translate</i>
+                    English
+                    <i class="material-icons" style="vertical-align: middle;">arrow_drop_down</i>
+                </button>
+                <button class="signIn" onclick="window.location.href='/user/login'">Sign In</button>
+            </div>
+        </nav>
+        <div class="headBox">
+            <div class="head">
+                <p class="heading">Unlimited movies,<br>TV shows and more</p>
+                <p class="h2">Starts at <i class="material-icons" style="vertical-align: middle;">currency_rupee</i>99. Cancel at any time.</p>
+                <p style="margin: 4px; font-size: 20px;">Ready to watch? Enter your emai to create or restart your membership.</p>
+                <div class="emailBox">
+                    <input type="text" placeholder="Email Address">
+                    <button class="signIn" onclick="window.location.href='user/register'">Get Started
+                        <i class="material-icons" style="vertical-align: middle; font-size: larger;">chevron_right</i>  </button>
+                </div>
+            </div>
         </div>
-        <div id="navBar">
-            <button onclick="window.location.href='/user/login'">Login</button>
-            <button onclick="">Register</button>
+        
+        <div class="bodyOutline">
+            <div class="bodyContent">
+                <div class="listHolder">
+                    <!-- Trending -->
+                    <div class="trending">
+                        <p class="h2" style="font-weight: 800;">Trending Now</p>
+                        <div class="trendingList">
+                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
+                                <img src="images/thumbnails/strangerThings.jpg" alt="Stranger Things" class="listImage"></img>
+                                <h2>Stranger Things</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
+                                <img src="images/thumbnails/lucifer.jpg" alt="Lucifer" class="listImage"></img>
+                                <h2>Lucifer</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/LostInSpace.webp" alt="Lost In Space" class="listImage"></img>
+                                <h2>Lost In Space</Span></h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
+                                <img src="images/thumbnails/sherlock.jpg" alt="Stranger Things" class="listImage"></img>
+                                <h2>Sherlock</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
+                                <img src="images/thumbnails/agathaAllAlong.jpg" alt="Lucifer" class="listImage"></img>
+                                <h2>Agatha All Along</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/inception.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>Inception</Span></h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
+                                <img src="images/thumbnails/godfather.jpg" alt="Stranger Things" class="listImage"></img>
+                                <h2>Godfather</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Action/lordOFRings.jpg" alt="Lucifer" class="listImage"></img>
+                                <h2>Lord Of The Rings</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Romance/itEndswithUs.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>It Ends With Us</Span></h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Comedy/theBoys.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>The Boys</Span></h2>
+                            </a>
+                            
+                        </div>
+                    </div>
+                    <!-- Action -->
+                    <div class="trending">
+                        <p class="h2" style="font-weight: 800;">Top Action</p>
+                        <div class="trendingList">
+                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Action/batDKR.jpg" alt="Stranger Things" class="listImage"></img>
+                                <h2>Batman - The Dark Knight Returns</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Action/matrix.jpg" alt="Lucifer" class="listImage"></img>
+                                <h2>Matrix</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Action/madMax.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>Mad Max</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Action/furiosa.jpg" alt="Stranger Things" class="listImage"></img>
+                                <h2>Furiosa</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Action/ghostProtocol.jpg" alt="Lucifer" class="listImage"></img>
+                                <h2>Ghost Protocol</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Action/lordOFRings.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>Lord Of The Rings</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Action/mI3.jpg" alt="Stranger Things" class="listImage"></img>
+                                <h2>Mission Impossible 3</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Action/minorityReport.jpg" alt="Lucifer" class="listImage"></img>
+                                <h2>Minority Report</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Action/totalRecall.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>Total Recall</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Action/venomLastDance.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>Venom: The Last Dance</h2>
+                            </a>
+                            
+                        </div>
+                    </div>
+                    <!-- Romance -->
+                    <div class="trending">
+                        <p class="h2" style="font-weight: 800;">Top Romance</p>
+                        <div class="trendingList">
+                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Romance/falultInOurStars.jpg" alt="Stranger Things" class="listImage"></img>
+                                <h2>Fault In Our Stars</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Romance/flyMe2Moon.jpg" alt="Lucifer" class="listImage"></img>
+                                <h2>Fly Me To Moon</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Romance/itEndswithUs.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>It Ends With Us</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Romance/love3d.jpg" alt="Stranger Things" class="listImage"></img>
+                                <h2>Love 3D</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Romance/memory.jpg" alt="Lucifer" class="listImage"></img>
+                                <h2>Memory</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Romance/pAp.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>Pride And Prejudice</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Romance/serendipity.jpg" alt="Stranger Things" class="listImage"></img>
+                                <h2>Serendipity</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Romance/theLuckyOne.jpg" alt="Lucifer" class="listImage"></img>
+                                <h2>The Lucky One</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Romance/theNotebook.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>The theNotebook</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Romance/theVow.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>The Vow</Span></h2>
+                            </a>
+                            
+                        </div>
+                    </div>
+                    <!-- Comedy -->
+                    <div class="trending">
+                        <p class="h2" style="font-weight: 800;">Top Comedy</p>
+                        <div class="trendingList">
+                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Comedy/bruceAlmighty.jpg" alt="Stranger Things" class="listImage"></img>
+                                <h2>Bruce Almighty</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Comedy/fallGuy.jpg" alt="Lucifer" class="listImage"></img>
+                                <h2>Fall Guy</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Comedy/ghosts.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>Ghosts</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Comedy/homeAlone.jpg" alt="Stranger Things" class="listImage"></img>
+                                <h2>Home Alone</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Comedy/hangover.jpg" alt="Lucifer" class="listImage"></img>
+                                <h2>Hangover</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Comedy/ted.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>Ted</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Comedy/neverGirl.jpg" alt="Stranger Things" class="listImage"></img>
+                                <h2>Never Girl</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Comedy/scaryMovie.jpg" alt="Lucifer" class="listImage"></img>
+                                <h2>Scary Movie</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Comedy/shawnOfTheDead.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>Shawn Of the Dead</h2>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
+                                <img src="images/thumbnails/Comedy/theBoys.jpg" alt="Lost In Space" class="listImage"></img>
+                                <h2>The Boys</h2>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="footer">
+                    <h2>Contact us: nikhilkhandelwal.hv@gmail.com</h2>
+                    <img src="images/Sputnik's LOGO.jpg" alt="" id="creatorLogo">
+                </div>
+            </div>
         </div>
-    </nav>
+    </div>
 </body>
 </html>
