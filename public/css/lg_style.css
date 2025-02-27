@@ -3,29 +3,34 @@
     
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     height: 100vh;
+    width: 100vw;
     /* background: radial-gradient();
     background-size: 400% 400%;
     animation: gradient 15s ease infinite; */
     /* background-image: url("abstract-textured-backgound.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat; */
-    background-color: green;
+    background: #d2cbc1;
+    overflow: hidden;
     
 }
 
 
 .main_box{
     border: none;
-    height: 600px;
-    width: 600px;
+    height: 50%;
+    width: 40%;
     align-self: center; 
-    margin: auto; 
+    /* margin: auto;  */
     vertical-align: middle; 
     border-radius: 10px;
-    background: linear-gradient(to right bottom, rgb(166, 2, 248), rgb(252, 2, 240));
-    block-size: auto;
+    background: linear-gradient(to right, #222217,#4d5038, #858666);
+    /* block-size: auto; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     
 
 }
@@ -34,26 +39,32 @@
     text-align: center;
     margin: 8px 0px 2px;
     border-bottom: 2px solid grey;
-    color:aqua;
+    color:rgb(255, 255, 255);
     /* background-color: aquamarine; */
 }
 .form{
     /* background-color: aquamarine; */
+    display: flex;
+    width:100%;
+    flex-direction: column;
+    text-align: center;
     align-content: space-around;
     align-content: center;
-    height: 200px;
+    height: 100%;
     border-bottom: 2px solid grey;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     color: white;
+    padding-top: 2%;
 }
 
 #textFields{
     /* border: none; */
     border: 1px solid black;
     border-radius: 20px;
-    background-color: rgb(2, 150, 248,0);
+    background-color: #d2cbc1;
     padding: 8px;
     color:black;
+    width: 60%;
     
 }
 
@@ -62,17 +73,27 @@
     text-align: center;
     vertical-align: middle;
     margin: 10px;
+    padding-top: 5%;
 
 }
 
 .buttonStyle{
     border: 2px solid black;
-    padding: 4px;
+    padding: 14px 50px;
     /* height: 4px;
     width: 4px; */
-    border-radius: 100px;
-    color:  aqua;
+    border-radius: 20px;
+    background: #d2cbc1;
     block-size: auto;;
     font-style: normal;
-    background-color: rgb(166, 2, 248);
+    color:#222217;
+    transition: all .15s ease;
+}
+.buttonStyle:hover{
+    background:#222217;
+    color: #d2cbc1;
+}
+
+#registerLink{
+    padding-top: 4%;
 }

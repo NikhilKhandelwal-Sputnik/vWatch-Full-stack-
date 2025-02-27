@@ -1,0 +1,12 @@
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navBar{
+    display: flex;
+    flex-direction: row;
+    
+}

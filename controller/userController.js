@@ -156,9 +156,58 @@ const delUser = async(req, res)=>{
     }
 };
 
+const userDisplay = async(req, res)=>{
+    try{
+        const id = req.params.id;
+        const user = await User.findById(id);
+        return res.status(200).json({
+            message:'User Got!!',
+            success:true,
+            data:user
+        })
+    }
+    catch(error){
+        console.log(error)
+        return res.status(500).json({
+            success:false,
+            data:null,
+            message:'Internal Server Error'
+        })
+    }
+};
+
+const getAllUser = async(req, res)=>{
+    let {page,limit} = req.query;
+    page = parseInt(page) || 1;
+    limit = parseInt(limit) || 10;
+
+    const skip = (page-1)*limit;
+    try{
+        const allUser = await User.find().skip(skip).limit(limit);
+        const total = await User.countDocuments();
+
+        return res.status(200).json({
+            success:true,
+            data:allUser,
+            pages:Math.ceil(total/limit),
+            message:'got all users'
+        })
+    }
+    catch(error){
+        console.log(error)
+        return res.status(500).json({
+            success:false,
+            data:null,
+            message:'Internal Server Error'
+        })
+    }
+};
+
 module.exports ={
     registerUser,
     userLogin,
     userUpdate,
-    delUser
+    delUser,
+    getAllUser,
+    userDisplay
 };

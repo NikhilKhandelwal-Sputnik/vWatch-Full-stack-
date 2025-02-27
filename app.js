@@ -1,4 +1,4 @@
-//Server Creation
+
 
 const express = require('express')
 const path = require('path')
@@ -23,7 +23,7 @@ app.use('/user',userRoute)
 app.use('/product', productRoute)
 
 app.get('/user/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'loginPage.html'));
 });
 
 app.listen(PORT,()=>{

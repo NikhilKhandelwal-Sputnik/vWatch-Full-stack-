@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-Page</title>
+    <link rel="stylesheet" href="/css/lg_style.css">
+</head>
+<body class="background">
+    <div class="main_box">
+        <div class="heading">
+            <h2>Login</h2>
+        </div>
+        <div class="form">
+            <form id ="loginForm" onsubmit="logFormData(); return handleLogin(event);">
+                
+                
+                <input type="text" name="email" id = "textFields" placeholder="Email">
+                <br><br>
+                
+                <input type="password" name="password" id = "textFields" placeholder="Password">
+                <div class="loginButton">
+                    <button type="submit" class="buttonStyle">Login</button>
+                </div>
+                
+            </form>
+            <label for="Register" id="registerLink">Don't have an account? <a href="">Register Here..</a></label>
+            <div id="errorMessage" style="color: red; display: none;"></div>
+        </div>
+    </div>
+    <script>
+        function logFormData() {
+            const form = document.getElementById('loginForm');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            console.log('Form Data:', data);
+            return true;
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('loginForm');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('/user/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    // Login successful, redirect to another page
+                    const userId = result.id; // Get the user id from the JSON response
+                    window.location.href = `/${userId}/dashboard`; // Change this to your desired page
+                } else {
+                    // Login failed, display error message
+                    const errorMessage = document.getElementById('errorMessage');
+                    errorMessage.textContent = result.message;
+                    errorMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                const errorMessage = document.getElementById('errorMessage');
+                errorMessage.textContent = 'An error occurred. Please try again.';
+                errorMessage.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
