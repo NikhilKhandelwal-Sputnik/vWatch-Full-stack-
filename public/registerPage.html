@@ -61,9 +61,9 @@
 
                 const result = await response.json();
                 if (response.ok) {
-                    // Login successful, redirect to another page
-                    const userId = result.data._id; // Get the user id from the JSON response
-                    window.location.href = `/${userId}/dashboard`; // Change this to your desired page
+                    
+                    const userId = result.data._id;
+                    window.location.href = `${userId}`; 
                 } else {
                     // Login failed, display error message
                     const errorMessage = document.getElementById('errorMessage');

@@ -23,8 +23,13 @@ app.use('/product', productRoute)
 app.get('/user/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'loginPage.html'));
 });
+
 app.get('/user/register', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'registerPage.html'));
+});
+
+app.get(`/user/:id`, (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'userInfo.html'));
 });
 
 
