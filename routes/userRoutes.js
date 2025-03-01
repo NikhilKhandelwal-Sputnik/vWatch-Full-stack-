@@ -7,7 +7,7 @@ const controller = require('../controller/userController');
 //post, get, fetch, delete, put
 userRouter.post('/register', controller.registerUser)
 userRouter.post('/login',controller.userLogin)
-userRouter.get('/:id/dashboard', controller.userDisplay)
+userRouter.get('/:id', controller.userDisplay)
 // userRouter.delete('/:id',controller.delUser)
 // userRouter.patch('/:id',controller.userUpdate)
 userRouter.get('/allUser', controller.getAllUser)

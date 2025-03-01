@@ -20,7 +20,7 @@ const productRoute = require('./routes/productRoutes')
 app.use('/user',userRoute)
 app.use('/product', productRoute)
 
-app.get('/user/login', (req, res) => {
+app.get('/user/signIn', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'loginPage.html'));
 });
 
@@ -28,11 +28,11 @@ app.get('/user/register', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'registerPage.html'));
 });
 
-app.get(`/user/:id`, (req, res) => {
+app.get(`/user/:id/dashboard`, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'userInfo.html'));
 });
 
 
 app.listen(PORT,()=>{
-    console.log('Server is runing at port $(PORT)');
+    console.log(`Server is runing at port ${PORT}`);
 })
