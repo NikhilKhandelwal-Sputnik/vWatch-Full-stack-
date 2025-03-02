@@ -20,6 +20,6 @@ const userSchema = new mongoose.Schema({
         type:String,
         require:true
     }
-},{timestamps:true})
+},{timestamps:true}, {collection:'users'});
 
 module.exports = mongoose.model("User", userSchema)

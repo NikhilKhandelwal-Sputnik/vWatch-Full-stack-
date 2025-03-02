@@ -15,7 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 const userRoute = require('./routes/userRoutes')
-const productRoute = require('./routes/productRoutes')
+const productRoute = require('./routes/productRoutes');
+const cmtRouter = require('./routes/cmtRoutes');
 
 
 
@@ -54,6 +55,7 @@ app.get(`/user/:id/dashboard`, (req, res) => {
 
 app.use('/user',userRoute)
 app.use('/product', productRoute)
+app.use('/comments', cmtRouter)
 
 app.listen(PORT,()=>{
     console.log(`Server is runing at port ${PORT}`);
