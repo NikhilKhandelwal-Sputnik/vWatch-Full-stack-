@@ -12,7 +12,7 @@
             <h2>Login</h2>
         </div>
         <div class="form">
-            <form id ="loginForm" onsubmit="logFormData(); return handleLogin(event);">
+            <form id ="loginForm" onsubmit="return handleLogin(event);">
                 
                 
                 <input type="text" name="email" id = "textFields" placeholder="Email">
@@ -56,7 +56,7 @@
                 const result = await response.json();
                 if (response.ok) {
                     const userId = result.data._id;
-                    window.location.href = `${userId}`; 
+                    window.location.href = `${userId}/dashboard`; 
                 } else {
                     // Login failed, display error message
                     const errorMessage = document.getElementById('errorMessage');

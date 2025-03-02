@@ -17,21 +17,43 @@ app.use(express.urlencoded({ extended: true }));
 const userRoute = require('./routes/userRoutes')
 const productRoute = require('./routes/productRoutes')
 
-app.use('/user',userRoute)
-app.use('/product', productRoute)
+
 
 app.get('/user/signIn', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'loginPage.html'));
+    const filePath = path.join(__dirname, 'public', 'loginPage.html');
+    console.log('Serving loginPage.html from:', filePath);
+    res.sendFile(filePath, (err) => {
+        if (err) {
+            console.error('Error sending loginPage.html:', err);
+            res.status(500).send('Internal Server Error');
+        }
+    });
 });
 
 app.get('/user/register', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'registerPage.html'));
+    const filePath = path.join(__dirname, 'public', 'registerPage.html');
+    console.log('Serving registerPage.html from:', filePath);
+    res.sendFile(filePath, (err) => {
+        if (err) {
+            console.error('Error sending registerPage.html:', err);
+            res.status(500).send('Internal Server Error');
+        }
+    });
 });
 
 app.get(`/user/:id/dashboard`, (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'userInfo.html'));
+    const filePath = path.join(__dirname, 'public', 'userInfo.html');
+    console.log('Serving userInfo.html from:', filePath);
+    res.sendFile(filePath, (err) => {
+        if (err) {
+            console.error('Error sending userInfo.html:', err);
+            res.status(500).send('Internal Server Error');
+        }
+    });
 });
 
+app.use('/user',userRoute)
+app.use('/product', productRoute)
 
 app.listen(PORT,()=>{
     console.log(`Server is runing at port ${PORT}`);

@@ -51,7 +51,7 @@
             const data = Object.fromEntries(formData.entries());
 
             try {
-                const response = await fetch('/user/register', {
+                const response = await fetch('/user/registerUser', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -63,7 +63,7 @@
                 if (response.ok) {
                     
                     const userId = result.data._id;
-                    window.location.href = `${userId}`; 
+                    window.location.href = `${userId}/dashboard`; 
                 } else {
                     // Login failed, display error message
                     const errorMessage = document.getElementById('errorMessage');
