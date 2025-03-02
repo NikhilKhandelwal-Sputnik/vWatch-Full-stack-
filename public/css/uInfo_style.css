@@ -18,7 +18,7 @@
 .main_box{
     border: none;
     height: 50%;
-    width: 40%;
+    width: 60%;
     align-self: center; 
     /* margin: auto;  */
     vertical-align: middle; 
@@ -39,11 +39,124 @@
     border-bottom: 2px solid lime;
     color:rgb(255, 255, 255);
     font-family: sans-serif;
+    height: 20%;
     /* background-color: aquamarine; */
 }
 
 #userInfo{
     height: 75%;
     width: 100%;
+    color: white;
     
 }
+
+
+.userInfo {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 8px;
+    height: 75%;
+    width: 100%;
+}
+    
+#divName {
+    grid-column: span 2 / span 2;
+    color: lime;
+    text-align: center;
+    padding: 5%;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#divEmail {
+    grid-column: span 2 / span 2;
+    grid-column-start: 1;
+    grid-row-start: 2;
+    color: lime;
+    text-align: center;
+    padding: 5%;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#divPhoneNo {
+    grid-column: span 2 / span 2;
+    grid-column-start: 1;
+    grid-row-start: 3;
+    color: lime;
+    text-align: center;
+    padding: 5%;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#divNameField {
+    grid-column: span 3 / span 3;
+    grid-column-start: 3;
+    grid-row-start: 1;
+    color: black;
+    background-color: white;
+    border-radius: 16px;
+    border: none;
+    margin: 4%;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#divEmailField {
+    grid-column: span 3 / span 3;
+    grid-column-start: 3;
+    grid-row-start: 2;
+    color: black;
+    background-color: white;
+    border-radius: 16px;
+    border: none;
+    margin: 4%;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#divPhoneNoField {
+    grid-column: span 3 / span 3;
+    grid-column-start: 3;
+    grid-row-start: 3;
+    color: black;
+    background-color: white;
+    border-radius: 16px;
+    border: none;
+    margin: 4%;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 10px,  8%;
+
+}
+        

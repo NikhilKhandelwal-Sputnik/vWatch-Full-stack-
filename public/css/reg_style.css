@@ -102,3 +102,11 @@ a{
     font-family: sans-serif;
     color: lime;
 }
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 10px,  8%;
+
+}

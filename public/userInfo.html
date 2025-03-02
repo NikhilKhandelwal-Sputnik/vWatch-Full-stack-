@@ -7,13 +7,21 @@
     <link rel="stylesheet" href="/css/uInfo_style.css">
 </head>
 <body class="background">
+   
     <div class="main_box">
         <div class="heading">
             <h2>User Dashboard</h2>
         </div>
-        <div id="userInfo">
             
+        <div class="userInfo">
+            <div id="divName">Name</div>
+            <div id="divEmail">Email</div>
+            <div id="divPhoneNo">Phone Number</div>
+            <div id="divNameField"></div>
+            <div id="divEmailField"></div>
+            <div id="divPhoneNoField"></div>
         </div>
+    
         
     </div>
     <script>
@@ -43,12 +51,15 @@
             
         }
         function displayUserData(user) {
-            const userInfoDiv = document.getElementById('userInfo');
-            userInfoDiv.innerHTML = `
-                <p>Name: ${user.name}</p>
-                <p>Email: ${user.email}</p>
-                <p>Phone Number: ${user.phoneNo}</p>
-            `;
+            const nameDiv = document.getElementById('divNameField');
+            const emailDiv = document.getElementById('divEmailField');
+            const pNoDiv = document.getElementById('divPhoneNoField');
+            
+            nameDiv.innerText = user.name;
+            emailDiv.innerText = user.email;
+            pNoDiv.innerText = user.phoneNo;
+            
+            
         }
 
         window.onload = fetchUserData;
