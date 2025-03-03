@@ -21,9 +21,49 @@
             <div id="divEmailField"></div>
             <div id="divPhoneNoField"></div>
         </div>
+
+        <div class="buttonHolder">
+            <button class="editButton">Edit</button>
+            <button class="deleteButton" onclick="openDialog()">Delete</button>
+        </div>
     
         
     </div>
+    
+    <div id="overlay"></div>
+
+    <dialog id="dltUserDialog" class="dialogBox">
+        
+
+        
+        <div class="dialogBody">
+            <h4>WARNING!!</h4>
+            <p>Are you sure you want to delete this account?</p>
+            <div class="dlgButtons">
+                <button id="cancelButton">Cancel</button>
+                <button id="confirmButton">Confirm</button>
+            </div>
+        </div>
+    
+    </dialog>
+
+    <dialog id="dltCnfrmDialog" class="dialogBox">
+        
+
+        
+        <div class="dialogBody">
+            <h4>SUCCESS</h4>
+            <p>Account Deleted Successfully!!</p>
+            <div class="dlgButtons">
+                <button id="okButton">OK</button>
+            </div>
+        </div>
+    
+    </dialog>
+    
+
+
+
     <script>
         
         async function fetchUserData() {
@@ -50,19 +90,75 @@
             }
             
         }
+
+        async function dltUser() {
+            const userId = window.location.pathname.split('/')[2];
+            const cnfrmDialog = document.getElementById('dltCnfrmDialog');
+            const dltDialog = document.getElementById('dltUserDialog');
+
+            try {
+                const response = await fetch(`/user/delete/${userId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }//,
+                    // // body: JSON.stringify(data)
+                });
+                const result = await response.json();
+
+                if (response.ok) {
+                   dltDialog.close();
+                   cnfrmDialog.showModal();
+                } else {
+                    console.error('Failed to fetch user data:', result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                
+            }
+
+        }
+
         function displayUserData(user) {
             const nameDiv = document.getElementById('divNameField');
             const emailDiv = document.getElementById('divEmailField');
             const pNoDiv = document.getElementById('divPhoneNoField');
             
-            nameDiv.innerText = user.name;
-            emailDiv.innerText = user.email;
-            pNoDiv.innerText = user.phoneNo;
+            nameDiv.innerHTML =` 
+            ${user.name}`;
+            emailDiv.innerHTML = ` 
+            ${user.email}`;
+            pNoDiv.innerHTML =` 
+            ${user.name}`;
             
             
         }
 
+        function openDialog() {
+            const dialog = document.getElementById('dltUserDialog');
+            const overlay = document.getElementById('overlay');
+            overlay.style.display = 'block';
+            dialog.showModal();
+        }
+
+        function closeDialog() {
+            const dialog = document.getElementById('dltUserDialog');
+            const overlay = document.getElementById('overlay');
+            overlay.style.display = 'none';
+            dialog.close();
+        }
+
+        function closeCnfrmDlg(){
+            const dialog = document.getElementById('dltCnfrmDialog')
+            dialog.close();
+            window.location.href = '/';
+        }
+
         window.onload = fetchUserData;
+
+        document.getElementById('cancelButton').addEventListener('click', closeDialog);
+        document.getElementById('confirmButton').addEventListener('click', dltUser);
+        document.getElementById('okButton').addEventListener('click', closeCnfrmDlg);
     </script>
 </body>
 </html>
