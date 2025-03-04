@@ -1,0 +1,52 @@
+const mongoose = require('mongoose')
+
+const movie = new mongoose.Schema({
+    plot:{
+        type:String,
+        require:true
+    },
+    genres:{
+        type:Array,
+        require:true
+    },
+    runtime:{
+        type:Number,
+        require:true
+    },
+    cast:{
+        type:Array,
+        require:true
+    },
+    poster:{
+        type:String,
+        require:true
+    },
+    title:{
+        type:String,
+        require:true
+    },
+    fullplot:{
+        type:String,
+        require:true
+    },
+    languages:{
+        type:Array,
+        require:true
+    },
+    released:{
+        type:Date,
+        require:true
+    },
+    directors:{
+        type:Array,
+        require:true
+    },
+    rated:{
+        type:String,
+        require:true
+    },
+    awards:{
+        type:Object
+    },
+    
+})
