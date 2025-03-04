@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const movie = new mongoose.Schema({
+const movieSchema = new mongoose.Schema({
     plot:{
         type:String,
         require:true
@@ -48,5 +48,37 @@ const movie = new mongoose.Schema({
     awards:{
         type:Object
     },
+    lastupdated:{
+        type:Date,
+        require:true
+    },
+    year:{
+        type:Number,
+        length:4,
+        require:true
+    },
+    imdb:{
+        type:Object,
+        require:true
+    },
+    countries:{
+        type:Array,
+        require:true
+    },
+    type:{
+        type:String,
+        require:true
+    },
+    tomatoes:{
+        type:Object,
+        require:true
+    },
+    num_mflix_comments:{
+        type:Number,
+        require:true,
+    }
+
     
-})
+},{collection:'movies'});
+
+module.exports = mongoose.model("Movie", movieSchema)
