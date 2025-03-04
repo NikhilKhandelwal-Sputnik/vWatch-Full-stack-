@@ -8,7 +8,7 @@ const app = express()
 const connectDB = require('./db/db');
 connectDB();
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));

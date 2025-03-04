@@ -60,7 +60,7 @@
     width: 100%;
 }
     
-#divName {
+.div1 {
     grid-column: span 2 / span 2;
     color: lime;
     text-align: center;
@@ -74,7 +74,7 @@
     
 }
 
-#divEmail {
+.div2 {
     grid-column: span 2 / span 2;
     grid-column-start: 1;
     grid-row-start: 2;
@@ -90,7 +90,7 @@
     
 }
 
-#divPhoneNo {
+.div3 {
     grid-column: span 2 / span 2;
     grid-column-start: 1;
     grid-row-start: 3;
@@ -106,7 +106,7 @@
     
 }
 
-#divNameField {
+.div1F {
     grid-column: span 3 / span 3;
     grid-column-start: 3;
     grid-row-start: 1;
@@ -121,7 +121,7 @@
     justify-content: center;
 }
 
-#divEmailField {
+.div2F {
     grid-column: span 3 / span 3;
     grid-column-start: 3;
     grid-row-start: 2;
@@ -136,7 +136,7 @@
     justify-content: center;
 }
 
-#divPhoneNoField {
+.div3F {
     grid-column: span 3 / span 3;
     grid-column-start: 3;
     grid-row-start: 3;
@@ -164,7 +164,7 @@
     margin-right: 10%;
 }
 
-.editButton{
+/* .editButton{
     background-color: transparent;
     color: white;
     display: flex;
@@ -185,10 +185,10 @@
 .editButton:hover{
     background-color: limegreen;
     color: black;
-}
+} */
 
 
-.deleteButton{
+/* .deleteButton{
     background-color: transparent;
     color: white;
     display: flex;
@@ -209,11 +209,11 @@
 .deleteButton:hover{
     background-color: red;
     color: whitesmoke;
-}
+} */
 
 .dialogBox{
-    height: 25vh;
-    width: 60vw;
+    height: 35vh;
+    width: 40vw;
     border: 2px solid lime;
     border-radius: 8px;
     background: linear-gradient(to bottom, rgb(6, 21, 86) 0%, black 40%);
@@ -266,7 +266,7 @@
     z-index: 1000; /* Ensure it is above other elements */
 }
 
-#cancelButton{
+.greenButton{
     background-color: transparent;
     color: white;
     display: flex;
@@ -284,13 +284,13 @@
     transition: 0.2s background-color, 0.2s color;
 }
 
-#cancelButton:hover{
+.greenButton:hover{
     background-color: limegreen;
     color: black;
 }
 
 
-#confirmButton{
+.redButton{
     background-color: transparent;
     color: white;
     display: flex;
@@ -308,12 +308,12 @@
     transition: 0.2s background-color, 0.2s color;
 }
 
-#confirmButton:hover{
+.redButton:hover{
     background-color: red;
     color: whitesmoke;
 }
 
-#okButton{
+/* #okButton{
     background-color: transparent;
     color: white;
     display: flex;
@@ -334,4 +334,4 @@
 #okButton:hover{
     background-color: red;
     color: whitesmoke;
-}
+} */

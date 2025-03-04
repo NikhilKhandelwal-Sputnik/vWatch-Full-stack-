@@ -14,6 +14,6 @@ userRouter.get('/allUser', controller.getAllUser)
 //Dynamic Routes
 userRouter.get('/:id', controller.userDisplay)
 userRouter.delete('/delete/:id',controller.delUser)
-// userRouter.patch('/:id',controller.userUpdate)
+userRouter.patch('/update/:id',controller.userUpdate)
 
 module.exports = userRouter;

@@ -111,11 +111,13 @@ const userLogin = async(req, res)=>{
 const userUpdate = async(req,res)=>{
     try{
         const id = req.params.id;
-        const {name} = req.body;
-        const updateUser = await User.findByIdAndUpdate(id,{name})
+        const {name, phoneNo} = req.body;
+        
+        const updateUser = await User.findByIdAndUpdate(id,{name, phoneNo});
+        const getUpdtUser = await User.findById(id);        
         return res.status(200).json({
             success:true,
-            data:updateUser,
+            data:getUpdtUser,
             message:'User Updated Successfully!!'
         })
     }

@@ -14,17 +14,17 @@
         </div>
             
         <div class="userInfo">
-            <div id="divName">Name</div>
-            <div id="divEmail">Email</div>
-            <div id="divPhoneNo">Phone Number</div>
-            <div id="divNameField"></div>
-            <div id="divEmailField"></div>
-            <div id="divPhoneNoField"></div>
+            <div id="divName" class="div1">Name</div>
+            <div id="divEmail" class="div2">Email</div>
+            <div id="divPhoneNo" class="div3">Phone Number</div>
+            <div id="divNameField" class="div1F"></div>
+            <div id="divEmailField" class="div2F"></div>
+            <div id="divPhoneNoField" class="div3F"></div>
         </div>
 
         <div class="buttonHolder">
-            <button class="editButton">Edit</button>
-            <button class="deleteButton" onclick="openDialog()">Delete</button>
+            <button class="greenButton" onclick="openUpdtDlg()">Edit</button>
+            <button class="redButton" onclick="openDialog()">Delete</button>
         </div>
     
         
@@ -32,133 +32,237 @@
     
     <div id="overlay"></div>
 
-    <dialog id="dltUserDialog" class="dialogBox">
-        
 
+<!-- Dlt User Dialog Box -->
+    <dialog id="dltUserDialog" class="dialogBox">
         
         <div class="dialogBody">
             <h4>WARNING!!</h4>
             <p>Are you sure you want to delete this account?</p>
             <div class="dlgButtons">
-                <button id="cancelButton">Cancel</button>
-                <button id="confirmButton">Confirm</button>
+                <button id="cancelButton" class="greenButton">Cancel</button>
+                <button id="confirmButton" class="redButton">Confirm</button>
             </div>
         </div>
     
     </dialog>
 
-    <dialog id="dltCnfrmDialog" class="dialogBox">
-        
 
+    <!-- Delete User Cnfirmation dlg -->
+    <dialog id="dltCnfrmDialog" class="dialogBox">
         
         <div class="dialogBody">
             <h4>SUCCESS</h4>
             <p>Account Deleted Successfully!!</p>
             <div class="dlgButtons">
-                <button id="okButton">OK</button>
+                <button id="okButton" class="greenButton">OK</button>
             </div>
         </div>
     
+    </dialog>
+
+    <dialog id="updtCnfrmDialog" class="dialogBox">
+        
+        <div class="dialogBody">
+            <h4>SUCCESS</h4>
+            <p>Account Updated Successfully!!</p>
+            <div class="dlgButtons">
+                <button id="okUpdtButton" class="greenButton">OK</button>
+            </div>
+        </div>
+    
+    </dialog>
+
+
+    <!-- Update User Dialogue Box -->
+    <dialog id="updateUserDlg" class="dialogBox" style="height: 40vh; width: 40vw;">
+        <div class="dialogBody">
+            <div style="
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 8px;
+            height: 75%;
+            width: 100%;">
+                <div id="divUpdtName" class="div1">Name</div>
+                <div id="divUpdtPhoneNo" class="div2">Phone Number</div>
+                <input id="divUpdtNameField" class="div1F"></input>
+                <input id="divUpdtPhoneNoField" class="div2F"></input>
+            </div>
+            <div class="dlgButtons">
+                <button id="cancelUpdtButton" class="redButton">Cancel</button>
+                <button id="confirmUpdtButton" class="greenButton">Confirm</button>
+            </div>
+        </div>
     </dialog>
     
 
 
 
     <script>
-        
+
+        let pubName = "";
+        let pubPNo = 0;
+
         async function fetchUserData() {
-            const userId = window.location.pathname.split('/')[2]
+        const userId = window.location.pathname.split('/')[2]
 
-            try {
-                const response = await fetch(`/user/${userId}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }//,
-                    // // body: JSON.stringify(data)
-                });
-                const result = await response.json();
+        try {
+            const response = await fetch(`/user/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }//,
+                // // body: JSON.stringify(data)
+            });
+            const result = await response.json();
 
-                if (response.ok) {
-                    displayUserData(result.data);
-                } else {
-                    console.error('Failed to fetch user data:', result.message);
-                }
-            } catch (error) {
-                console.error('Error:', error);
+            if (response.ok) {
+                displayUserData(result.data);
                 
+            } else {
+                console.error('Failed to fetch user data:', result.message);
             }
+        } catch (error) {
+            console.error('Error:', error);
             
         }
+        
+    }
 
-        async function dltUser() {
-            const userId = window.location.pathname.split('/')[2];
-            const cnfrmDialog = document.getElementById('dltCnfrmDialog');
-            const dltDialog = document.getElementById('dltUserDialog');
+    async function updateUserData() {
+        const userId = window.location.pathname.split('/')[2]
+        const updateDlg = document.getElementById(updateUserDlg);
+        const updtCnfrmUserDlg = document.getElementById(updtCnfrmDialog);
 
-            try {
-                const response = await fetch(`/user/delete/${userId}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }//,
-                    // // body: JSON.stringify(data)
-                });
-                const result = await response.json();
+        try {
+            const response = await fetch(`/user/update/${userId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                name: document.getElementById('divUpdtNameField').value,
+                phoneNo: document.getElementById('divUpdtPhoneNoField').value
+            })
+            });
+            const result = await response.json();
 
-                if (response.ok) {
-                   dltDialog.close();
-                   cnfrmDialog.showModal();
-                } else {
-                    console.error('Failed to fetch user data:', result.message);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                
+            if (result.success) {
+                window.location.reload();
+            } else {
+                console.error('Failed to fetch user data:', result.message);
             }
-
-        }
-
-        function displayUserData(user) {
-            const nameDiv = document.getElementById('divNameField');
-            const emailDiv = document.getElementById('divEmailField');
-            const pNoDiv = document.getElementById('divPhoneNoField');
-            
-            nameDiv.innerHTML =` 
-            ${user.name}`;
-            emailDiv.innerHTML = ` 
-            ${user.email}`;
-            pNoDiv.innerHTML =` 
-            ${user.name}`;
-            
+        } catch (error) {
+            console.error('Error:', error);
             
         }
+        
+    }
 
-        function openDialog() {
-            const dialog = document.getElementById('dltUserDialog');
-            const overlay = document.getElementById('overlay');
-            overlay.style.display = 'block';
-            dialog.showModal();
+    async function dltUser() {
+        const userId = window.location.pathname.split('/')[2];
+        const cnfrmDialog = document.getElementById('dltCnfrmDialog');
+        const dltDialog = document.getElementById('dltUserDialog');
+
+        try {
+            const response = await fetch(`/user/delete/${userId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }//,
+                // // body: JSON.stringify(data)
+            });
+            const result = await response.json();
+
+            if (response.ok) {
+            dltDialog.close();
+            cnfrmDialog.showModal();
+            } else {
+                console.error('Failed to fetch user data:', result.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            
         }
 
-        function closeDialog() {
-            const dialog = document.getElementById('dltUserDialog');
-            const overlay = document.getElementById('overlay');
-            overlay.style.display = 'none';
-            dialog.close();
-        }
+    }
 
-        function closeCnfrmDlg(){
-            const dialog = document.getElementById('dltCnfrmDialog')
-            dialog.close();
-            window.location.href = '/';
-        }
+    function displayUserData(user) {
+        const nameDiv = document.getElementById('divNameField');
+        const emailDiv = document.getElementById('divEmailField');
+        const pNoDiv = document.getElementById('divPhoneNoField');
+        pubName = user.name;
+        pubPNo = user.phoneNo;
+        
+        nameDiv.innerHTML =` 
+        ${user.name}`;
+        emailDiv.innerHTML = ` 
+        ${user.email}`;
+        pNoDiv.innerHTML =` 
+        ${user.phoneNo}`;
+        
+        
+    }
 
-        window.onload = fetchUserData;
+    function openDialog() {
+        const dialog = document.getElementById('dltUserDialog');
+        const overlay = document.getElementById('overlay');
+        overlay.style.display = 'block';
+        dialog.showModal();
+    }
 
-        document.getElementById('cancelButton').addEventListener('click', closeDialog);
-        document.getElementById('confirmButton').addEventListener('click', dltUser);
-        document.getElementById('okButton').addEventListener('click', closeCnfrmDlg);
+    function closeDialog() {
+        const dialog = document.getElementById('dltUserDialog');
+        const overlay = document.getElementById('overlay');
+        overlay.style.display = 'none';
+        dialog.close();
+    }
+
+    function closeCnfrmDlg(){
+        const dialog = document.getElementById('dltCnfrmDialog')
+        dialog.close();
+        window.location.href = '/';
+    }
+
+    // Updtate Dialog 
+    function openUpdtDlg(){
+        const dialog = document.getElementById('updateUserDlg')
+        const overlay = document.getElementById('overlay');
+        const nameField = document.getElementById('divUpdtNameField');
+        const pNoField = document.getElementById('divUpdtPhoneNoField');
+
+        overlay.style.display = 'block';
+        dialog.showModal();
+        nameField.value = pubName
+        pNoField.value = pubPNo
+        
+        
+    }
+
+    function closeUpdtDialog() {
+        const dialog = document.getElementById('updateUserDlg');
+        const overlay = document.getElementById('overlay');
+        overlay.style.display = 'none';
+        dialog.close();
+    }
+
+    function closeUpdtCnfrmDlg(){
+        const dialog = document.getElementById('updtCnfrmDialog')
+        dialog.close();
+        
+    }
+
+    
+
+    window.onload = fetchUserData;
+
+    document.getElementById('cancelButton').addEventListener('click', closeDialog);
+    document.getElementById('confirmButton').addEventListener('click', dltUser);
+    document.getElementById('okButton').addEventListener('click', closeCnfrmDlg);
+    document.getElementById('okUpdtButton').addEventListener('click', closeUpdtCnfrmDlg);
+    document.getElementById('cancelUpdtButton').addEventListener('click', closeUpdtDialog);
+    document.getElementById('confirmUpdtButton').addEventListener('click', updateUserData);
     </script>
 </body>
 </html>
