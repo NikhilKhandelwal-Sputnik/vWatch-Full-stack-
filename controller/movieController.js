@@ -22,4 +22,27 @@ const getMovie = async(req, res)=>{
     }
 };
 
-module.exports={getMovie}
+const top10Rated = async(req, res)=>{
+    try{
+        const movies = await Movie.find({ 'imdb.rating': { $ne: null, $ne: '' } }).sort({'imdb.rating': -1}).limit(10);
+
+        return res.status(200).json({
+            success:true,
+            data:movies,
+            message:'Sort successfull'
+        })
+    }
+    catch(error){
+        console.log(error)
+        return res.status(500).json({
+            success:false,
+            data:null,
+            message:'Internal Server Error'
+        })
+    }
+};
+
+module.exports={
+    getMovie,
+    top10Rated    
+}

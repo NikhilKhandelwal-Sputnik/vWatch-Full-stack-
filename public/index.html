@@ -39,7 +39,7 @@
                     <!-- Trending -->
                     <div class="trending">
                         <p class="h2" style="font-weight: 800;">Trending Now</p>
-                        <div class="trendingList">
+                        <div class="trendingList" id="top10rated">
                             <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
                                 <img src="images/thumbnails/strangerThings.jpg" alt="Stranger Things" class="listImage"></img>
                                 <h2>Stranger Things</h2>
@@ -87,47 +87,6 @@
                     <div class="trending">
                         <p class="h2" style="font-weight: 800;">Top Action</p>
                         <div class="trendingList">
-                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Action/batDKR.jpg" alt="Stranger Things" class="listImage"></img>
-                                <h2>Batman - The Dark Knight Returns</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Action/matrix.jpg" alt="Lucifer" class="listImage"></img>
-                                <h2>Matrix</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Action/madMax.jpg" alt="Lost In Space" class="listImage"></img>
-                                <h2>Mad Max</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Action/furiosa.jpg" alt="Stranger Things" class="listImage"></img>
-                                <h2>Furiosa</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Action/ghostProtocol.jpg" alt="Lucifer" class="listImage"></img>
-                                <h2>Ghost Protocol</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Action/lordOFRings.jpg" alt="Lost In Space" class="listImage"></img>
-                                <h2>Lord Of The Rings</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Action/mI3.jpg" alt="Stranger Things" class="listImage"></img>
-                                <h2>Mission Impossible 3</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Action/minorityReport.jpg" alt="Lucifer" class="listImage"></img>
-                                <h2>Minority Report</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Action/totalRecall.jpg" alt="Lost In Space" class="listImage"></img>
-                                <h2>Total Recall</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Action/venomLastDance.jpg" alt="Lost In Space" class="listImage"></img>
-                                <h2>Venom: The Last Dance</h2>
-                            </a>
-                            
                         </div>
                     </div>
                     <!-- Romance -->
@@ -234,5 +193,57 @@
             </div>
         </div>
     </div>
+    <script>
+
+        
+        async function getTopRated(){
+            const trendingSlot = document.getElementById('top10rated')
+            try {
+            const response = await fetch(`/movie/top10`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                movieDisplay(result.data);
+            } else {
+                console.error('Failed to fetch user data:', result.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            
+        }
+        
+    }
+
+    function movieDisplay(movieData){
+        const trendingSlot = document.getElementById('top10rated');
+        trendingSlot.innerHTML = '';
+
+        movieData.forEach(movie =>{
+            const movieElement = document.createElement('a');
+            movieElement.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(movie.title)}`;
+            movieElement.target = '_blank';
+            movieElement.className = 'listItem';
+
+            const imgElement = document.createElement('img');
+            imgElement.src = movie.poster;
+            imgElement.alt = movie.title;
+            imgElement.className = 'listImage';
+
+            const titleElement = document.createElement('h2');
+            titleElement.textContent = movie.title;
+
+            movieElement.appendChild(imgElement);
+            movieElement.appendChild(titleElement);
+            trendingSlot.appendChild(movieElement);
+        })
+    }
+    getTopRated();
+    </script>
 </body>
 </html>
