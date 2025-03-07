@@ -40,53 +40,15 @@
                     <div class="trending">
                         <p class="h2" style="font-weight: 800;">Trending Now</p>
                         <div class="trendingList" id="top10rated">
-                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
-                                <img src="images/thumbnails/strangerThings.jpg" alt="Stranger Things" class="listImage"></img>
-                                <h2>Stranger Things</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
-                                <img src="images/thumbnails/lucifer.jpg" alt="Lucifer" class="listImage"></img>
-                                <h2>Lucifer</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
-                                <img src="images/thumbnails/LostInSpace.webp" alt="Lost In Space" class="listImage"></img>
-                                <h2>Lost In Space</Span></h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
-                                <img src="images/thumbnails/sherlock.jpg" alt="Stranger Things" class="listImage"></img>
-                                <h2>Sherlock</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
-                                <img src="images/thumbnails/agathaAllAlong.jpg" alt="Lucifer" class="listImage"></img>
-                                <h2>Agatha All Along</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
-                                <img src="images/thumbnails/inception.jpg" alt="Lost In Space" class="listImage"></img>
-                                <h2>Inception</Span></h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=stranger+things" target="_blank" class="listItem">
-                                <img src="images/thumbnails/godfather.jpg" alt="Stranger Things" class="listImage"></img>
-                                <h2>Godfather</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lucifer" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Action/lordOFRings.jpg" alt="Lucifer" class="listImage"></img>
-                                <h2>Lord Of The Rings</h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Romance/itEndswithUs.jpg" alt="Lost In Space" class="listImage"></img>
-                                <h2>It Ends With Us</Span></h2>
-                            </a>
-                            <a href="https://www.youtube.com/results?search_query=lost+in+space" target="_blank" class="listItem">
-                                <img src="images/thumbnails/Comedy/theBoys.jpg" alt="Lost In Space" class="listImage"></img>
-                                <h2>The Boys</Span></h2>
-                            </a>
+                            
                             
                         </div>
                     </div>
                     <!-- Action -->
                     <div class="trending">
                         <p class="h2" style="font-weight: 800;">Top Action</p>
-                        <div class="trendingList">
+                        <div class="trendingList" id="top10Action">
+
                         </div>
                     </div>
                     <!-- Romance -->
@@ -209,7 +171,7 @@
             const result = await response.json();
 
             if (result.success) {
-                movieDisplay(result.data);
+                movieDisplay(result.data, 'top10rated');
             } else {
                 console.error('Failed to fetch user data:', result.message);
             }
@@ -220,8 +182,32 @@
         
     }
 
-    function movieDisplay(movieData){
-        const trendingSlot = document.getElementById('top10rated');
+    async function getTopAction(){
+            const trendingSlot = document.getElementById('top10Action')
+            try {
+            const response = await fetch(`/movie/find?genre=Action`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                movieDisplay(result.data, 'top10Action');
+            } else {
+                console.error('Failed to fetch user data:', result.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            
+        }
+        
+    }
+    
+    function movieDisplay(movieData, id){
+        const trendingSlot = document.getElementById(id);
         trendingSlot.innerHTML = '';
 
         movieData.forEach(movie =>{
@@ -244,6 +230,7 @@
         })
     }
     getTopRated();
+    getTopAction();
     </script>
 </body>
 </html>

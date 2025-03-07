@@ -42,7 +42,32 @@ const top10Rated = async(req, res)=>{
     }
 };
 
+const getMoviebyGenre = async(req, res)=>{
+    
+    let genre = req.query.genre.trim();
+
+    try{
+        
+        const movies = await Movie.find({genres: {$in:[genre]}}).sort({'imdb.rating': -1}).limit(10).lean();
+
+        return res.status(200).json({
+            success:true,
+            data: movies,
+            message:'Sort Successfull!!'
+        })
+    }
+    catch(error){
+        console.log(error)
+        return res.status(500).json({
+            success:false,
+            data:null,
+            message:'Internal Server Error'
+        })
+    }
+};
+
 module.exports={
     getMovie,
-    top10Rated    
+    top10Rated,
+    getMoviebyGenre    
 }
