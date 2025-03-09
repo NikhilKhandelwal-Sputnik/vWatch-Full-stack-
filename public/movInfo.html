@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/movInfo.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body class="background">
+    <nav>
+        <img href="images/logo2.png" alt="Home" class="logo" onclick="window.location.href = '/'">
+        <div>
+            <button id="language">
+                <i class="material-icons" style="vertical-align: middle;">translate</i>
+                English
+                <i class="material-icons" style="vertical-align: middle;">arrow_drop_down</i>
+            </button>
+            <button class="signIn" onclick="window.location.href='/user/signIn'">Sign In</button>
+        </div>
+    </nav>
+    
+    <div class="parent">
+        <div class="div1">1</div>
+        <div class="div2">
+            <img src="" alt="" id="poster">
+            <h2 class="Title" id="movieTitle">Title</h2>
+            <div>
+                <div class="contentBox">
+                    <h3>Genre</h3>
+                    <div class="content" id="genre"></div>
+                </div>
+            </div>
+            <div class="contentBox">
+                <h3>Full Plot</h3>
+                <div class="content" id="plot"></div>
+            </div>
+        </div>
+        <div class="div3">3</div>
+    </div>
+    <script>
+        async function getMovieInfo(){
+            const movieId = window.location.pathname.split('/')[2]
+            try {
+            const response = await fetch(`/movie/${movieId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }//,
+                // // body: JSON.stringify(data)
+            });
+            const result = await response.json();
+
+            if (response.ok) {
+                displayMovieData(result.data);
+                
+            } else {
+                console.error('Failed to fetch user data:', result.message);
+            }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        function displayMovieData(data){
+            const poster = document.getElementById('poster');
+            const title = document.getElementById('movieTitle');
+            const moviePlot = document.getElementById('plot');
+            const movieGenre = document.getElementById('genre');
+            // const poster = document.getElementById('poster');
+            // const poster = document.getElementById('poster');
+
+            poster.src = data.poster;
+            title.innerText = ''
+            title.innerText = data.title;
+            moviePlot.innerHTML = `<p>${data.plot}</p>`;
+            
+        }
+
+        function displayGenre (slot, genre){
+
+        }
+
+        getMovieInfo();
+    </script>
+</body>
+</html>

@@ -183,7 +183,7 @@
 
         movieData.forEach(movie =>{
             const movieElement = document.createElement('a');
-            movieElement.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(movie.title)}`;
+            movieElement.href = `/movie/${movie._id}/info`;
             movieElement.target = '_blank';
             movieElement.className = 'listItem';
 
