@@ -9,7 +9,7 @@
 </head>
 <body class="background">
     <nav>
-        <img href="images/logo2.png" alt="Home" class="logo" onclick="window.location.href = '/'">
+        <img src="images/logo2.png" alt="Home" class="logo" onclick="window.location.href = '/'">
         <div>
             <button id="language">
                 <i class="material-icons" style="vertical-align: middle;">translate</i>
@@ -20,23 +20,6 @@
         </div>
     </nav>
     
-    <div class="parent">
-        <div class="div1">1</div>
-        <div class="div2">
-            <img src="" alt="" id="poster">
-            <h2 class="Title" id="movieTitle">Title</h2>
-            <div>
-                <div class="contentBox">
-                    <h3>Genre</h3>
-                    <div class="content" id="genre"></div>
-                </div>
-            </div>
-            <div class="contentBox">
-                <h3>Full Plot</h3>
-                <div class="content" id="plot"></div>
-            </div>
-        </div>
-    </div>
     <script>
         async function getMovieInfo(){
             const movieId = window.location.pathname.split('/')[2]
@@ -80,7 +63,7 @@
             
         }
 
-        getMovieInfo();
+        // getMovieInfo();
     </script>
 </body>
 </html>

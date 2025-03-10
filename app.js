@@ -64,6 +64,17 @@ app.get(`/movie/:id/info`, (req, res) => {
     });
 });
 
+app.get(`/movie/all`, (req, res) => {
+    const filePath = path.join(__dirname, 'public', 'movieList.html');
+    console.log('Serving movInfo.html from:', filePath);
+    res.sendFile(filePath, (err) => {
+        if (err) {
+            console.error('Error sending movInfo.html:', err);
+            res.status(500).send('Internal Server Error');
+        }
+    });
+});
+
 app.use('/user',userRoute)
 app.use('/product', productRoute)
 app.use('/comments', cmtRouter)

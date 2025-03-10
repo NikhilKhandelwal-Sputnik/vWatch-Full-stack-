@@ -268,3 +268,33 @@ nav div{
     border-radius: 100%;
     height: 90px;
 }
+
+.greenButton{
+    background-color: transparent;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 20%;
+    font-size: large;
+    border: 2px solid whitesmoke;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 8px;
+    flex-wrap: nowrap;
+    font-family: sans-serif;
+    transition: 0.2s background-color, 0.2s color;
+    
+}
+
+.greenButton:hover{
+    background-color: limegreen;
+    color: black;
+}
+.moreButtonHolder{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -9,7 +9,7 @@
 </head>
 <body class="background">
     <nav>
-        <img src="images/logo2.png" alt="Home" class="logo" onclick="window.location.href = '/'">
+        <img src="./images/logo2.png" alt="Home" class="logo" id="navLogo" onclick="window.location.href = '/'">
         
     </nav>
     <div class="main_box">
@@ -82,6 +82,12 @@
                 errorMessage.style.display = 'block';
             }
         }
+        function setLogo(){
+            const navLogo = document.getElementById('navLogo');
+            navLogo.src = './images/logo2';
+        }
+
+        window.onload = setLogo;
     </script>
 </body>
 </html>

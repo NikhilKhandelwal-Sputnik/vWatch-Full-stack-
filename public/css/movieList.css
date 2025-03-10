@@ -1,12 +1,23 @@
-.background{
-    height: 100vh;
-    width: 100vw;
-    background-color: black;
-    position: fixed;
-    top: 0;
-    left: 0;
+body{
+    background: black;
+    color: white;
+    overflow: hidden;
+    
 }
-        
+
+.full_bg{
+    height: 100vh;
+    width: 100%;
+    background-image: radial-gradient(rgba(0,0,0,0.4),rgba(0,0,0,1)), url("../images/thumbnailCollage.png");
+    background-size:cover;
+    background-position: center;
+    padding: 10px, 8%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    
+}
+
 .logo{
     height: 7vh;
     margin-top: 2%;
@@ -63,4 +74,18 @@ nav div{
     width: 30%;
     border: 0;
     border-radius: 8px;
+}
+
+
+.holder{
+    height: 80%;
+    width: 80%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    scrollbar-color: rgba(57, 57, 57,0) black ; 
+    position: fixed;
+    bottom: 0;
+
 }
