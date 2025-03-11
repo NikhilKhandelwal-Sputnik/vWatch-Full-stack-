@@ -66,8 +66,36 @@ const getMoviebyGenre = async(req, res)=>{
     }
 };
 
+const getAllMovies = async(req, res)=>{
+    let {page,limit} = req.query;
+    page = parseInt(page) || 1;
+    limit = parseInt(limit) || 10;
+
+    const skip = (page-1)*limit;
+    try{
+        const allMovies = await Movie.find().skip(skip).limit(limit);
+        const total = await Movie.countDocuments();
+
+        return res.status(200).json({
+            success:true,
+            data:allMovies,
+            pages:Math.ceil(total/limit),
+            message:'got all movies'
+        })
+    }
+    catch(error){
+        console.log(error)
+        return res.status(500).json({
+            success:false,
+            data:null,
+            message:'Internal Server Error'
+        })
+    }
+};
+
 module.exports={
     getMovie,
     top10Rated,
-    getMoviebyGenre    
+    getMoviebyGenre,
+    getAllMovies
 }
