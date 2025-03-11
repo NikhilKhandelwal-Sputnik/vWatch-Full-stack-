@@ -87,5 +87,58 @@ nav div{
     scrollbar-color: rgba(57, 57, 57,0) black ; 
     position: fixed;
     bottom: 0;
+    display: grid;
+    grid-column: 4;
+    grid-row: 10;
 
+}
+
+.listItem{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: center;
+    position: relative;
+    height: 280px;
+    width: 180px;
+    border: 2px solid green;
+    margin: 20px;
+    border-radius: 16px;
+    text-align: center;
+    padding: 10px;
+    text-wrap:balance;
+    text-decoration: none;
+    color: lime;
+    text-shadow: 0.5px solid black;
+    transition: 0.3s height, 0.3s width, 0.3s margin, 0.3s border, 0.3s color;
+}
+
+.listImage{
+    position: absolute;
+    align-self: center;
+    height: 80%;
+    width: 80%;
+    filter:grayscale(80%) blur(3px);
+    transition: 0.3s height, 0.3s width, 0.3s margin, 0.3s filter;
+
+}
+
+.listItem:hover{
+    height: 400px;
+    width: 300px;
+    margin: 5px;
+    border: 2px solid white;
+    color:azure;
+}
+
+.listItem:hover .listImage{
+    filter: none;
+}
+
+
+
+.listItem h2{
+    position: absolute;
+    bottom: 0%;
+    width: 90%;
 }
