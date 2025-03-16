@@ -11,6 +11,7 @@ body{
     background-image: radial-gradient(rgba(0,0,0,0.4),rgba(0,0,0,1)), url("../images/thumbnailCollage.png");
     background-size:cover;
     background-position: center;
+    
     padding: 10px, 8%;
     position: relative;
     display: flex;
