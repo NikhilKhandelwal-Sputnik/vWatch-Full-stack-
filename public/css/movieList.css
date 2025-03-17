@@ -11,7 +11,6 @@ body{
     background-image: radial-gradient(rgba(0,0,0,0.4),rgba(0,0,0,1)), url("../images/thumbnailCollage.png");
     background-size:cover;
     background-position: center;
-    
     padding: 10px, 8%;
     position: relative;
     display: flex;
@@ -26,6 +25,17 @@ body{
     margin-left: 7%;
     cursor: pointer;
 }
+
+.search{
+    border: 2px solid grey ;
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    color: white;
+    padding: 0%;
+}
+
+
 
 nav{
     height: 10%;
@@ -89,8 +99,7 @@ nav div{
     position: fixed;
     bottom: 0;
     display: grid;
-    grid-column: 4;
-    grid-row: 10;
+    grid-template-columns: repeat(4, 1fr);
 
 }
 
@@ -125,8 +134,8 @@ nav div{
 }
 
 .listItem:hover{
-    height: 400px;
-    width: 300px;
+    height: 300px;
+    width: 200px;
     margin: 5px;
     border: 2px solid white;
     color:azure;
