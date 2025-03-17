@@ -67,9 +67,9 @@ const getMoviebyGenre = async(req, res)=>{
 };
 
 const getAllMovies = async(req, res)=>{
-    let page = req.query;
+    let {page} = req.query;
     page = parseInt(page) || 1;
-    limit = 40;
+    limit = parseInt(40);
 
     const skip = (page-1)*limit;
     try{
@@ -80,6 +80,7 @@ const getAllMovies = async(req, res)=>{
             success:true,
             data:allMovies,
             pages:Math.ceil(total/limit),
+            activePage: `${page}`,
             message:'got all movies'
         })
     }
